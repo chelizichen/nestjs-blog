@@ -16,7 +16,7 @@ export class RoleService {
   }
 
   async findAll(): Promise<Role[]> {
-    return getRepository(Role)
+    return this.repository
       .createQueryBuilder('role')
       .leftJoinAndSelect('role.auths', 'auth')
       .getMany()

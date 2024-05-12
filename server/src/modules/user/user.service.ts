@@ -46,7 +46,7 @@ export class UserService {
   }
 
   async findAll(): Promise<User[]> {
-    return await getRepository(User)
+    return await this.repository
       .createQueryBuilder('user')
       .select(['user', 'role.id', 'role.name'])
       .leftJoin('user.roles', 'role')
